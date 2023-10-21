@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	
+	<title>Camelot</title>
+</head>
+
+<body>
+	<h1 class="w3-jumbo">Final Energy Consumption by sector and fuel 1970-2021</h1>
+	
+	<select class="camelot-common camelot-common-animate camelot-category-selector" id="camelot-api-selection">
+		<option>Industry</option>
+		<option>Transport</option>
+		<option>Domestic</option>
+		<option>Services and other final users</option>
+		<option>All final users</option>
+		<option>Road transport (additional breakdown)</option>
+	</select>
+	<button class="camelot-common camelot-common-animate camelot-button" onclick="generateReport()">Select</button>
+
+	<div class="camelot-common camelot-response" id="camelot-api-reply">
+		The quick brown fox jumps over the lazy dog.
+	</div>
+</body>
+
+<script>
+	function generateReport() {
+		const selection = $("#camelot-api-selection").find(":selected").text();
+
+		$.ajax({
+			type: "POST",
+			url: "/test",
+			data: { selection: selection },
+
+			success: function(data) {
+				$("#camelot-api-reply").text(data);
+			}
+		});
+	}
+</script>
+</html>
