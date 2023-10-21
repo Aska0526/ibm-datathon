@@ -10,7 +10,7 @@ def CallDash(sector):
     openai.api_key = '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'
 
     messages = [{"role": "system", "content":
-        "I want you to act as a data science instructor. You will explain energy consumption data to the general public."}]
+        "I want you to act as a data science instructor. You will explain energy consumption data as an expert."}]
 
     def ChatRun(message):
         messages.append(
@@ -58,8 +58,8 @@ def CallDash(sector):
     response = ChatRun(f"Please write a report based on the following dataframe. The unit of the data is thousand tonnes of oil equivalen.\
     The dataframe is about Energy Consumption in {sector} in the UK from 1970-2021. \
     The report should summerise the content, show the trends, do comparisions, and give conclusion and future outlook at the end. \
-    The report should be about 300 words. Don't show the title and don't say vague scentences. \
-    I knowI konw the data is from the past and may not be useful to predict the future. The dataframe is:"+str(df_plot))
+    The report should be less than 300 words. Don't show the title of the report. Make sure each statement is supported by data and numbers. \
+    I know the data are from the past and may not be useful to predict the future, so don't say it in the report. The dataframe is:"+str(df_plot))
 
     app = Dash(__name__)
 
