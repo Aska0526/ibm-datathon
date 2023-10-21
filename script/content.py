@@ -53,6 +53,7 @@ def CallDash(sector):
         key = f"{small_dataframes[i].iloc[-1][0]}"
         value = small_dataframes[i]
         PlotDict[key] = value
+    #print(PlotDict)
 
     df_plot = PlotDict[sector]
     response = ChatRun(f"Please write a report based on the following dataframe. The unit of the data is thousand tonnes of oil equivalen.\
@@ -67,7 +68,7 @@ def CallDash(sector):
     # Layout of the Dash application
 
     app.layout = html.Div([
-        html.H1(children=f'Final Energy Consumption by sector and fuel 1970-2021 - {sector} | Unit: Thousand tonnes of oil equivalent', style={'textAlign':'center'}),
+        html.H1(children=f'UK Final Energy Consumption by sector and fuel 1970-2021 - {sector} | Unit: Thousand tonnes of oil equivalent', style={'textAlign':'center'}),
         dcc.Dropdown(df_plot.columns[1:], 'Coal', id='dropdown-selection'),
         dcc.Graph(id='graph-content'),
         dcc.Textarea(
