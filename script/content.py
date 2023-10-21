@@ -7,7 +7,7 @@ import time
 
 
 def CallDash(sector):
-    openai.api_key = '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'
+    openai.api_key = 'xxxxxxxx'
 
     messages = [{"role": "system", "content":
         "I want you to act as a data science instructor. You will explain energy consumption data as an expert."}]
