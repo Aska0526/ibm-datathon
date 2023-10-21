@@ -21,14 +21,14 @@
 	<button class="camelot-common camelot-common-animate camelot-button" onclick="generateReport()">Select</button>
 
 	<div class="camelot-common camelot-response" id="camelot-api-reply">
-		The quick brown fox jumps over the lazy dog.
+		Thank you for using our IBM Z-Hackathon Project app!!!!
 	</div>
 </body>
 
 <script>
 	function generateReport() {
 		const selection = $("#camelot-api-selection").find(":selected").text();
-
+		console.log(selection)
 		$.ajax({
 			type: "POST",
 			url: "/test",

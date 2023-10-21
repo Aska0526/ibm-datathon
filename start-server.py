@@ -1,10 +1,10 @@
 from script.test import getSelection
-
+from script.content import CallDash
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 class handler(BaseHTTPRequestHandler):
     def _set_response(self):
-        self.send_response(200)
+        self.send_response(20)
         if self.path.endswith(".css"):
             self.send_header('Content-type', 'text/css')
         else:
@@ -24,9 +24,13 @@ class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
-
+        post_data = post_data.decode("ascii").split("=")[1]
         self._set_response()
-        self.wfile.write("POST request for {}".format(getSelection(post_data)).encode('utf-8'))
+        print(post_data)
+        #self.wfile.write("POST request for {}".format(CallDash(post_data)).encode('utf-8'))
+        CallDash(post_data)
+
+
 
 with HTTPServer(('', 54321), handler) as server:
     server.serve_forever()
